@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0d1b2a;
+  --foreground: #f0f4f8;
+  --accent-blue: #5eb3f6;
+  --accent-teal: #6de4e8;
+  --accent-purple: #9d8df1;
+  --accent-warm: #ffa07a;
+  --accent-gold: #ffd700;
+  --shimmer: rgba(255, 255, 255, 0.15);
+  --cozy-glow: rgba(255, 200, 150, 0.1);
 }
 
 @theme inline {
@@ -12,15 +19,52 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1b2f45 20%, #2d4a6f 40%, #1e3a5f 60%, #2a3f5f 80%, #0d1b2a 100%);
+  background-size: 400% 400%;
+  animation: aurora 20s ease infinite;
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(92, 225, 230, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(74, 158, 255, 0.5);
+  }
 }
